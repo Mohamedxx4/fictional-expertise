@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drag-and-Drop Form Builder</title>
+  <link rel="stylesheet" href="Custom Form Builder.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<style>
+  body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+
+.navbar{
+  width: 100%;
+  height: 60px;
+  background-color: white;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar img {
+  width: 40px;
+  height: 40px;
+  padding: 20px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline;
+  transition: color 0.3s ease;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #f9f9f9;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #007BFF;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+
+.navbar img{
+  width: 50px;
+  height: 50px;
+  align-items: center;
+}
+
+.navbar li{
+  list-style: none;
+  color: #495057;
+  display: inline;
+  align-items: center;
+}
+
+.navbar a{
+  text-decoration: none;
+  color: #495057;
+  padding: 20px;
+}
+
+.navbar .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 150px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  border-radius: 5px;
+  padding: 10px 0;
+}
+
+.navbar .dropdown-content a {
+  color: #495057;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar .dropdown-content a:hover {
+  background-color: #007BFF;
+  color: #fff;
+}
+
+.navbar li {
+  position: relative;
+}
+
+.navbar li:hover .dropdown-content {
+  display: block;
+}
+
+.tool-plus-form{
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+#toolbox {
+  width: 15%;
+  background-color: #343a40; 
+  color: #fff;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+#toolbox h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #f9f9f9;
+}
+
+.drag-item {
+  padding: 10px;
+  margin: 5px 0;
+  color: #495057;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  text-align: center;
+  cursor: grab;
+}
+
+.drag-item:hover{
+  transition: 0.3s ease;
+  color: #f9f9f9;
+  background-color: #6C757D;
+  font-weight: bold;
+}
+
+.drag-item:active {
+  cursor: grabbing;
+}
+
+#form-area {
+  flex: 1;
+  width: 85%;
+  padding: 20px;
+  border-left: 2px solid #343a40;
+  background-color: #FEFEFF;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
+
+#form-area h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #495057;
+}
+
+#form-area p {
+  color: #6c757d; 
+  text-align: center;
+}
+
+input, textarea, button {
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+textarea {
+  resize: none;
+}
+
+#form-area label {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+</style>
+
+<body>
+  <nav class="navbar">
+    <img src="https://www.feostech.com/_next/static/media/Logo_lg.1de44910.svg" alt="logo">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a class="dropdown" href="#features">Features</a>
+        <div class="dropdown-content">
+          <a href="#">Feature 1</a>
+          <a href="#">Feature 2</a>
+          <a href="#">Feature 3</a>
+        </div>
+      </li>
+      <li><a class="dropdown" href="#account">Account</a>
+        <div class="dropdown-content">
+          <a href="#">Personal Details</a>
+          <a href="#">Add Account</a>
+          <a href="#">Log out </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <div class="tool-plus-form">
+  <div id="toolbox">
+    <h3>Question Types</h3>
+    <p draggable="true" class="drag-item" data-type="heading">Heading</p>
+    <p draggable="true" class="drag-item" data-type="description">Description</p>
+    <p draggable="true" class="drag-item" data-type="name-fields">Full Name</p>
+    <p draggable="true" class="drag-item" data-type="contact-information">Contact Information</p>
+    <p draggable="true" class="drag-item" data-type="input">Textbox</p>    
+    <p draggable="true" class="drag-item" data-type="radio-group">Radio Group</p>
+    <p draggable="true" class="drag-item" data-type="checkbox-group">CheckBox</p>
+    <p draggable="true" class="drag-item" data-type="short-answer">Short Answer</p>
+    <p draggable="true" class="drag-item" data-type="long-answer">Long Answer</p>
+    <p draggable="true" class="drag-item" data-type="email">Email</p>
+    <p draggable="true" class="drag-item" data-type="file-upload">File Upload</p>
+    <p draggable="true" class="drag-item" data-type="multiple-textboxes">Mutiple Textboxes</p>
+    <p draggable="true" class="drag-item" data-type="nps">Net Promoter Score</p>
+    <p draggable="true" class="drag-item" data-type="slider">Slider</p>
+    <p draggable="true" class="drag-item" data-type="image-selector">Image Selector</p>
+    <p draggable="true" class="drag-item" data-type="rating-scale">Rating Scale</p>
+    <p draggable="true" class="drag-item" data-type="star-rating">Star Rating</p>
+    <p draggable="true" class="drag-item" data-type="matrix-text">Matrix Textbox</p>
+    <p draggable="true" class="drag-item" data-type="matrix-dropdown">Matrix Dropdown</p>
+    <p draggable="true" class="drag-item" data-type="matrix-radio">Matrix Radio</p>
+    <p draggable="true" class="drag-item" data-type="matrix-checkbox">Matrix Checkbox</p>
+    <p draggable="true" class="drag-item" data-type="matrix-radio-rating">Matrix Radio Rating</p>
+    <p draggable="true" class="drag-item" data-type="matrix-star-rating">Matrix Star Rating</p>
+    <p draggable="true" class="drag-item" data-type="upload-signature">Upload Signature</p>
+    <p draggable="true" class="drag-item" data-type="continuous-sum">Summation/Continuous Sum</p>
+    <p draggable="true" class="drag-item" data-type="button">Button</p>
+
+  </div>
+  <div id="form-area">
+    <h3>Form Area</h3>
+    <p>Drag items here to build your form</p>
+    <form method="post" id="dynamicForm">
+      <!-- Drag-and-drop components will populate here -->
+    </form>
+  </div>
+  </div>
+  <script src="Custom Form Builder.js"></script>
+</body>
+</html>
