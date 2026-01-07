@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMET | Login</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="login.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-menu">
+        <img class="logo" src="../Assets/Logo.png" alt="">
+        <form name="login-form" class="login-form" method="POST" action="/login">
+            <label for="">Enter your Username/E-mail ID:</label>
+            <input type="text" name="username" required>
+            <label for="">Enter your Password:</label>
+            <input type="password" name="password" required>
+            <a href="../SignUp/signUp.html">Don't have an Account ?</a>
+            <button type="submit" name="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>
